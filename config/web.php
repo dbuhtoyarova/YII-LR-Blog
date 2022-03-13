@@ -23,6 +23,9 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'A9clVA6DLISfdNa8pNSZIruemssH2GvJ',
             'baseUrl' => '',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -58,9 +61,12 @@ $config = [
                 'page/<page:\d+>' => 'post/index',
                 '/' => 'post/index',
                 'post/<id:\d+>' => 'post/view',
-                'category/<alias:[a-zA-Z0-9-]+>' => 'category/view'
+                'category/<alias:[a-zA-Z0-9-]+>' => 'category/view',
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api/post'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api/category'],
             ],
         ],
+
     ],
     'params' => $params,
 ];
