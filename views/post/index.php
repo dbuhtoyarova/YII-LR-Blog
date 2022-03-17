@@ -43,115 +43,41 @@ $this->title = Yii::$app->name;
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image2.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
+                <?php foreach ($posts as $post): ?>
+                    <div class="col-md-3">
+                        <div class="single-post">
+                            <?= \yii\helpers\Html::img("@web/{$post->img}") ?>
+                            <h3>
+                                <a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?> "><?= $post->title ?></a>
+                            </h3>
+                            <h4><span>Category: <span class="author-name">
+                                        <a href="<?= \yii\helpers\Url::to(['category/view', 'alias' => $post->category->alias]) ?>">
+                                        <?= $post->category->title ?>
+                                    </a>
+                                    </span></span>
+                            </h4>
+                            <?= $post->excerpt ?>
+                            <h4><span> <?= Yii::$app->formatter->asDate($post->created_at, 'php:d.m.Y') ?></span></h4>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image3.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image4.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image5.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image6.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image7.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image8.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-post">
-                        <img src="img/post-image9.jpg" alt="">
-                        <h3><a href="#">Post Title Goes Here.</a></h3>
-                        <h4><span>Posted By: <span class="author-name">Kabbo Liate</span></span>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore
-                            et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <h4><span>25 February 2017</span></h4>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
+
     <div class="pegination">
-        <!--
-        <ul>
-            <li><i class="fa fa-angle-left" aria-hidden="true"></i></li>
-            <li class="active">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-        </ul>
--->
+
 
         <div class="nav-links">
-            <span class="page-numbers current">1</span>
-            <a class="page-numbers" href="#">2</a>
-            <a class="page-numbers" href="#">3</a>
-            <a class="page-numbers" href="#">4</a>
-            <a class="page-numbers" href="#">5</a>
-            <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <?= \yii\widgets\LinkPager::widget([
+                'pagination' => $pages
+            ]) ?>
+            <!--            <span class="page-numbers current">1</span>-->
+            <!--            <a class="page-numbers" href="#">2</a>-->
+            <!--            <a class="page-numbers" href="#">3</a>-->
+            <!--            <a class="page-numbers" href="#">4</a>-->
+            <!--            <a class="page-numbers" href="#">5</a>-->
+            <!--            <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>-->
         </div>
     </div>
 </section>
